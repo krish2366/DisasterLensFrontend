@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
-const DisasterDetails = () => {
-  const { state } = useParams();
+const DisasterList = () => {
   const [disasters, setDisasters] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
     const fetchDisasters = async () => {
@@ -14,28 +13,27 @@ const DisasterDetails = () => {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        console.log("Fetched disasters:", data); // Debug: Log the fetched data
-        // Filter disasters by state
-        const filteredDisasters = data.filter((disaster) => {
-          const match = disaster.location?.state === state;
-          console.log(`Comparing ${disaster.location?.state} with ${state}: ${match}`); // Debug: Log each comparison
-          return match;
-        });
-        setDisasters(filteredDisasters);
+        console.log("Fetched disasters in DisasterList:", data);
+        setDisasters(data);
+        if (data.length === 0 && retryCount < 3) {
+          setTimeout(() => setRetryCount(retryCount + 1), 2000);
+        }
       } catch (error) {
-        console.error("Error fetching disasters:", error);
+        console.error("Error fetching disasters in DisasterList:", error);
       } finally {
-        setLoading(false);
+        if (disasters.length > 0 || retryCount >= 3) {
+          setLoading(false);
+        }
       }
     };
     fetchDisasters();
-  }, [state]);
+  }, [retryCount]);
 
   if (loading) return <div className="text-center text-xl mt-10">Loading...</div>;
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h2 className="text-3xl font-bold text-center mb-6">Disasters in {state}</h2>
+      <h2 className="text-3xl font-bold text-center mb-6">All Disasters</h2>
       {disasters.length === 0 ? (
         <p className="text-center text-gray-500">No disasters recorded.</p>
       ) : (
@@ -59,4 +57,4 @@ const DisasterDetails = () => {
   );
 };
 
-export default DisasterDetails;
+export default DisasterList;
