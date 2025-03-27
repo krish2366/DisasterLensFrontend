@@ -45,7 +45,7 @@ const Navbar = () => {
           >
             {[
               { name: "Home", path: "/" },
-              { name: "Map", path: "/map" },
+              { name: "Maps", path: "/maps" }, // Updated to "Maps" leading to map selection
               { name: "About", path: "/about" },
               { name: "Contact", path: "/contact" },
             ].map((item) => (
@@ -61,23 +61,23 @@ const Navbar = () => {
 
       {/* Live Ticker */}
       {disasters.length > 0 && (
-  <div className="ticker">
-    <div className="ticker-content">
-      {/* First set of items */}
-      {disasters.map((disaster, index) => (
-        <span key={index}>
-          {disaster.category.toUpperCase()}: {disaster.text}
-        </span>
-      ))}
-      {/* Duplicate the items to create a seamless loop */}
-      {disasters.map((disaster, index) => (
-        <span key={`duplicate-${index}`}>
-          {disaster.category.toUpperCase()}: {disaster.text}
-        </span>
-      ))}
-    </div>
-  </div>
-)}
+        <div className="ticker">
+          <div className="ticker-content">
+            {/* First set of items */}
+            {disasters.map((disaster, index) => (
+              <span key={index}>
+                {disaster.category.toUpperCase()}: {disaster.text}
+              </span>
+            ))}
+            {/* Duplicate the items to create a seamless loop */}
+            {disasters.map((disaster, index) => (
+              <span key={`duplicate-${index}`}>
+                {disaster.category.toUpperCase()}: {disaster.text}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const DisasterDetails = () => {
   const { state } = useParams();
+  const navigate = useNavigate();
   const [disasters, setDisasters] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -14,11 +15,13 @@ const DisasterDetails = () => {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        console.log("Fetched disasters:", data); // Debug: Log the fetched data
-        // Filter disasters by state
+        console.log("Fetched disasters:", data);
+        // Normalize state and location.name for comparison
+        const normalizedState = state.trim().toLowerCase();
         const filteredDisasters = data.filter((disaster) => {
-          const match = disaster.location?.state === state;
-          console.log(`Comparing ${disaster.location?.state} with ${state}: ${match}`); // Debug: Log each comparison
+          const name = disaster.location?.name?.trim().toLowerCase() || "";
+          const match = name === normalizedState;
+          console.log(`Comparing ${name} with ${normalizedState}: ${match}`);
           return match;
         });
         setDisasters(filteredDisasters);
@@ -31,10 +34,27 @@ const DisasterDetails = () => {
     fetchDisasters();
   }, [state]);
 
+  const goBackToMap = () => {
+    const previousPath = document.referrer || "/maps";
+    if (previousPath.includes("/world-map")) {
+      navigate("/world-map");
+    } else if (previousPath.includes("/map")) {
+      navigate("/map");
+    } else {
+      navigate("/maps");
+    }
+  };
+
   if (loading) return <div className="text-center text-xl mt-10">Loading...</div>;
 
   return (
     <div className="max-w-4xl mx-auto p-6">
+      <button
+        onClick={goBackToMap}
+        className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+      >
+        Back to Map
+      </button>
       <h2 className="text-3xl font-bold text-center mb-6">Disasters in {state}</h2>
       {disasters.length === 0 ? (
         <p className="text-center text-gray-500">No disasters recorded.</p>
@@ -49,7 +69,8 @@ const DisasterDetails = () => {
                 Date: {disaster.timestamp ? new Date(disaster.timestamp).toLocaleString() : "Unknown"}
               </p>
               <p className="text-sm text-gray-500">
-                Location: {disaster.location?.state || "Unknown"}
+                Location: {disaster.location?.name || "Unknown"} (
+                {disaster.location?.type === "state" ? "State" : "Country"})
               </p>
             </li>
           ))}
