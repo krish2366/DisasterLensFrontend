@@ -4,7 +4,7 @@
 
 
 .ticker {
-  background-color: #f8f8f8;
+  background-color: #ff0000;
   padding: 8px 0;
   overflow: hidden;
   white-space: nowrap;
@@ -12,13 +12,14 @@
 
 .ticker-content {
   display: inline-block;
-  animation: scroll 30s linear infinite;
+  animation: scroll 90s linear infinite;
 }
 
 .ticker-content span {
   margin-right: 40px;
   font-size: 14px;
-  color: #333;
+  font:bold;
+  color: yellow;
 }
 
 @keyframes scroll {

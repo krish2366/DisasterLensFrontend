@@ -5,7 +5,7 @@ import newsAPI from "../assets/newsapi.png";
 import usgs from "../assets/usgs.png";
 import gdacs from "../assets/gdacs.png";
 import openmeteo from "../assets/openmeteo.png";
-import herobg from "../assets/hero-bg.webp"
+import herobg from "../assets/hero.webp"
 
 const Home = () => {
   const [disasters, setDisasters] = useState([]);
@@ -60,10 +60,9 @@ const Home = () => {
     <div className="min-h-screen bg-gray-100 flex flex-col">
       {/* Hero Section */}
       <section
-        className={`bg-blue-600 text-white text-center py-20 bg-cover bg-center bg-${herobg}`}
+        className={` text-white text-center py-20 bg-cover bg-bottom  bg-hero`}
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/hero-bg.jpg')",
+          
         }}
       >
         <h1 className="text-4xl md:text-5xl font-bold">Real-Time Disaster Monitoring System</h1>

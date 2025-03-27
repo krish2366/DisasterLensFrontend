@@ -7,9 +7,9 @@ import DisasterPreparedness from "./Pages/DisasterPreparedness";
 import InteractiveWorldMap from "./components/worldMap";
 import MapSelection from "./components/MapSelection"; 
 import Contact from "./Pages/Contact"
+import PageNotFound from "./Pages/PageNotFound";
 
-const About = () => <div className="p-6 text-center text-xl">About Us</div>;
-const ContactUs = () => <div className="p-6 text-center text-xl">Contact Us</div>;
+// const PageNotFound = () => <div className="p-6 text-center text-xl">Page Not Found </div>;
 
 function App() {
   return (
@@ -22,8 +22,8 @@ function App() {
         <Route path="/world-map" element={<InteractiveWorldMap />} /> {/* World Map */}
         <Route path="/disaster/:state" element={<DisasterDetails />} />
         <Route path="/preparedness" element={<DisasterPreparedness />} />
-        <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
   );

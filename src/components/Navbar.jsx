@@ -46,7 +46,6 @@ const Navbar = () => {
             {[
               { name: "Home", path: "/" },
               { name: "Maps", path: "/maps" }, // Updated to "Maps" leading to map selection
-              { name: "About", path: "/about" },
               { name: "Contact", path: "/contact" },
             ].map((item) => (
               <li key={item.name} className="p-4 md:p-0">

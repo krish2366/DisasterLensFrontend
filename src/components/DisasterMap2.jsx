@@ -84,7 +84,7 @@ const InteractiveIndiaMap = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-fit bg-gradient-to-b from-orange-200 via-white to-blue-200 ">
       <h1 className="text-5xl font-bold text-gray-800 mb-6">Interactive India Map</h1>
       <div className="relative w-full max-w-4xl h-auto">
         {tooltip.visible && (
@@ -99,7 +99,7 @@ const InteractiveIndiaMap = () => {
           ref={mapRef}
           type="image/svg+xml"
           data={IndiaMap}
-          className="w-full drop-shadow-md"
+          className="w-full drop-shadow-md h-auto "
         ></object>
       </div>
     </div>
