@@ -6,7 +6,7 @@ const LiveUpdates = () => {
 
   useEffect(() => {
     fetchDisasters();
-    const interval = setInterval(fetchDisasters, 60000); // Auto-refresh every 30 sec
+    const interval = setInterval(fetchDisasters, 60000); 
     return () => clearInterval(interval);
   }, []);
 

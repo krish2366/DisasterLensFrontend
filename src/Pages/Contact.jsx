@@ -3,7 +3,7 @@ import { FaPhoneAlt, FaGlobe, FaEnvelope } from "react-icons/fa";
 
 const Contact = () => {
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+    <div className="max-w-4xl mx-auto my-5 p-8 bg-gray-300 shadow-lg rounded-lg">
       <h1 className="text-4xl font-bold text-center text-gray-900 mb-6">
         📞 Contact Help
       </h1>
@@ -12,7 +12,6 @@ const Contact = () => {
         emergency numbers, contacts for international NGOs, and ways to reach our team.
       </p>
 
-      {/* Emergency Numbers Section */}
       <section className="mb-12 bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           🚨 Universal Emergency Numbers
@@ -35,7 +34,6 @@ const Contact = () => {
         </p>
       </section>
 
-      {/* NGO Contacts Section */}
       <section className="mb-12 bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           🌍 International NGOs for Disaster Response
@@ -66,7 +64,6 @@ const Contact = () => {
         </ul>
       </section>
 
-      {/* DisasterLens Team Contact Section */}
       <section className="mb-12 bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           📩 Contact the DisasterLens Team
@@ -76,12 +73,11 @@ const Contact = () => {
         </p>
         <div className="flex items-center space-x-3 text-gray-700">
           <FaEnvelope className="text-red-500 text-lg" />
-          <span className="text-lg"><strong>Email:</strong> support@disasterlens.org</span>
+          <span className="text-lg"><strong>Email:</strong> Krish236630@gmail.com</span>
         </div>
         <p className="text-sm text-gray-500 mt-2">⏳ Response Time: Within 48 hours.</p>
       </section>
 
-      {/* Footer Note */}
       <p className="text-center text-gray-500 text-sm mt-6 italic">
         ⚠️ DisasterLens is not an emergency service. Contact local authorities for immediate help.
       </p>

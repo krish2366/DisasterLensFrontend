@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+html{
+  scroll-behavior: smooth;
+}
 .ticker {
   background-color: #ff0000;
   padding: 8px 0;

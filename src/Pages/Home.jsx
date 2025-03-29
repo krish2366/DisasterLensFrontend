@@ -5,7 +5,6 @@ import newsAPI from "../assets/newsapi.png";
 import usgs from "../assets/usgs.png";
 import gdacs from "../assets/gdacs.png";
 import openmeteo from "../assets/openmeteo.png";
-import herobg from "../assets/hero.webp"
 
 const Home = () => {
   const [disasters, setDisasters] = useState([]);
@@ -32,20 +31,8 @@ const Home = () => {
     fetchAllDisasters();
   }, []);
 
-  // Handle search functionality
-  const handleSearch = (e) => {
-    const query = e.target.value.toLowerCase();
-    setSearchQuery(query);
-    const filtered = disasters.filter((disaster) => {
-      const text = disaster.text?.toLowerCase() || "";
-      const category = disaster.category?.toLowerCase() || "";
-      const state = disaster.location?.state?.toLowerCase() || "";
-      return text.includes(query) || category.includes(query) || state.includes(query);
-    });
-    setFilteredDisasters(filtered);
-  };
+  
 
-  // Show disaster details in a modal
   const showEventDetails = (disaster) => {
     setSelectedDisaster(disaster);
     document.getElementById("eventModal").style.display = "block";
@@ -58,7 +45,6 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
-      {/* Hero Section */}
       <section
         className={` text-white text-center py-20 bg-cover bg-bottom  bg-hero`}
         style={{
@@ -67,15 +53,14 @@ const Home = () => {
       >
         <h1 className="text-4xl md:text-5xl font-bold">Real-Time Disaster Monitoring System</h1>
         <p className="mt-4 text-lg md:text-xl">Stay informed about disasters with real-time updates</p>
-        <Link
-          to="/map"
+        <a
+          href="#events"
           className="mt-6 inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition duration-300"
         >
           Get Started
-        </Link>
+        </a>
       </section>
 
-      {/* Key Features Section */}
       <section className="py-16 px-6">
         <h2 className="text-3xl font-bold text-center">Key Features</h2>
         <div className="grid md:grid-cols-4 gap-6 mt-8">
@@ -83,7 +68,7 @@ const Home = () => {
             <Bell className="w-8 h-8 text-red-500" />
             <h3 className="text-xl font-semibold">Real-Time Alerts</h3>
             <p className="text-gray-600 mt-2">Receive instant notifications about ongoing disasters.</p>
-            <Link to="/disasters" className="p-3 bg-blue-200 rounded-xl w-32 hover:bg-blue-300 transition duration-300">
+            <Link to="/hazardcheck" className="p-3 bg-blue-200 rounded-xl w-32 hover:bg-blue-300 transition duration-300">
               See Disaster
             </Link>
           </div>
@@ -102,7 +87,7 @@ const Home = () => {
             <Map className="w-8 h-8 text-blue-500" />
             <h3 className="text-xl font-semibold">Interactive Map</h3>
             <p className="text-gray-600 mt-2">Visualize disasters on an interactive map in real time.</p>
-            <Link to="/map" className="p-3 bg-blue-200 rounded-xl w-32 hover:bg-blue-300 transition duration-300">
+            <Link to="/maps" className="p-3 bg-blue-200 rounded-xl w-32 hover:bg-blue-300 transition duration-300">
               See Map
             </Link>
           </div>
@@ -117,19 +102,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Recent Events Section */}
-      <section className="py-16 px-6 bg-gray-200">
+      <section id="events" className="py-16 px-6 bg-gray-200">
         <h2 className="text-3xl font-bold text-center">Recent Events</h2>
-        {/* Search Bar */}
-        <div className="mt-4 flex justify-center">
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={handleSearch}
-            placeholder="Search disasters by location, category, or text..."
-            className="p-2 w-full max-w-md border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
+        
         <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredDisasters.length === 0 ? (
             <div className="col-span-full text-center text-gray-500">
@@ -156,37 +131,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Modal for Event Details */}
-      <div id="eventModal" className="modal">
-        <div className="modal-content">
-          <span className="close" onClick={closeModal}>
-            ×
-          </span>
-          {selectedDisaster && (
-            <>
-              <h3 className="text-xl font-bold">{selectedDisaster.category?.toUpperCase() || "UNKNOWN"}</h3>
-              <p className="mt-2">{selectedDisaster.text || "No description available"}</p>
-              <p className="mt-2 text-sm text-gray-500">Source: {selectedDisaster.source || "Unknown"}</p>
-              <p className="mt-1 text-sm text-gray-500">
-                Date: {selectedDisaster.timestamp ? new Date(selectedDisaster.timestamp).toLocaleString() : "Unknown"}
-              </p>
-              <p className="mt-1 text-sm text-gray-500">
-                Location: {selectedDisaster.location?.state || "Unknown"}
-              </p>
-              {selectedDisaster.location?.state && selectedDisaster.location.state !== "Unknown" && (
-                <Link
-                  to={`/disaster/${encodeURIComponent(selectedDisaster.location.state)}`}
-                  className="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-                >
-                  View More in {selectedDisaster.location.state}
-                </Link>
-              )}
-            </>
-          )}
-        </div>
-      </div>
 
-      {/* Footer */}
       <footer className="bg-gray-900 text-white py-6">
         <div className="container mx-auto text-center">
           <p>

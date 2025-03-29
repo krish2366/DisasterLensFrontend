@@ -7,7 +7,6 @@ const DisasterPreparedness = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Hero Section */}
       <div className="text-center py-10 bg-blue-900 text-white">
         <h1 className="text-4xl md:text-5xl font-bold">Disaster Preparedness</h1>
         <p className="text-lg md:text-xl text-gray-200 mt-2">
@@ -15,10 +14,8 @@ const DisasterPreparedness = () => {
         </p>
       </div>
 
-      {/* Disaster Types */}
       <div className="flex flex-col p-4 md:px-32 gap-10">
         <div className="flex flex-col md:flex-row items-center justify-between bg-blue-900 text-white p-6 rounded-lg shadow-lg">
-          {/* Text Section */}
           <div className="md:w-1/2 flex flex-col items-center gap-3">
             <h2 className="text-3xl font-bold">Flood</h2>
             <p className="text-lg text-center">
@@ -34,7 +31,6 @@ const DisasterPreparedness = () => {
             </a>
           </div>
 
-          {/* Image Section */}
           <div className="md:w-1/2 flex justify-center mt-4 md:mt-0">
             <img
               src="https://media.istockphoto.com/id/1327617934/photo/aerial-view-of-flooded-houses-with-dirty-water-of-dnister-river-in-halych-town-western-ukraine.jpg?s=612x612&w=0&k=20&c=ffFK1c1lx15S3PlX-tee1py2wkLiKYLad67VvFwTG2I="
@@ -45,7 +41,6 @@ const DisasterPreparedness = () => {
         </div>
 
         <div className="flex flex-col md:flex-row-reverse items-center justify-between bg-blue-900 text-white p-6 rounded-lg shadow-lg">
-          {/* Text Section */}
           <div className="md:w-[40%] flex flex-col items-center gap-3">
             <h2 className="text-3xl font-bold">Earthquake</h2>
             <p className="text-lg text-center">
@@ -61,7 +56,6 @@ const DisasterPreparedness = () => {
             </a>
           </div>
 
-          {/* Image Section */}
           <div className="md:w-[60%] flex justify-center mt-4 md:mt-0">
             <img
               src="https://www.iasexpress.net/wp-content/uploads/2020/03/earthquakes-and-its-management-in-india-upsc-essay-notes-mindmap-1.jpg"
@@ -72,7 +66,6 @@ const DisasterPreparedness = () => {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between bg-blue-900 text-white p-6 rounded-lg shadow-lg">
-          {/* Text Section */}
           <div className="md:w-1/2 flex flex-col items-center gap-3">
             <h2 className="text-3xl font-bold">Cyclone</h2>
             <p className="text-lg text-center">
@@ -88,7 +81,6 @@ const DisasterPreparedness = () => {
             </a>
           </div>
 
-          {/* Image Section */}
           <div className="md:w-1/2 flex justify-center mt-4 md:mt-0">
             <img
               src="https://cdn.britannica.com/48/123848-050-92824F8A/Cyclone-Catarina-International-Space-Station-Brazil-March-2004.jpg"
@@ -99,7 +91,6 @@ const DisasterPreparedness = () => {
         </div>
       </div>
 
-      {/* Actionable Steps */}
       <div id="flood" className="flex flex-col gap-7 bg-white rounded-xl p-10 m-10">
         <h1 className="text-4xl text-center font-bold">🌊 Flood Preparedness and Response Guide</h1>
         <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -339,7 +330,6 @@ const DisasterPreparedness = () => {
         </div>
       </div>
 
-      {/* Emergency Kit Checklist */}
       <div className="mt-10 text-center pb-10">
         <a
           href="/emergency-kit.pdf"

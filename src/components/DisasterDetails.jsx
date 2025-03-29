@@ -16,7 +16,7 @@ const DisasterDetails = () => {
         }
         const data = await response.json();
         console.log("Fetched disasters:", data);
-        // Normalize state and location.name for comparison
+
         const normalizedState = state.trim().toLowerCase();
         const filteredDisasters = data.filter((disaster) => {
           const name = disaster.location?.name?.trim().toLowerCase() || "";

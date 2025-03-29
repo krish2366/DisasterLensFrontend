@@ -8,8 +8,11 @@ import InteractiveWorldMap from "./components/worldMap";
 import MapSelection from "./components/MapSelection"; 
 import Contact from "./Pages/Contact"
 import PageNotFound from "./Pages/PageNotFound";
+import YourLocation from "./Pages/YourLocation";
+import YourLocationDisaster from "./Pages/YourLocationDisaster";
+import MapplsMap from "./components/MapplesHeatMap";
+import HazardCheck from "./Pages/HazardCheck";
 
-// const PageNotFound = () => <div className="p-6 text-center text-xl">Page Not Found </div>;
 
 function App() {
   return (
@@ -17,11 +20,15 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/maps" element={<MapSelection />} /> {/* New route for map selection */}
-        <Route path="/map" element={<DisasterMap />} /> {/* India Map */}
-        <Route path="/world-map" element={<InteractiveWorldMap />} /> {/* World Map */}
+        <Route path="/maps" element={<MapSelection />} /> 
+        <Route path="/heatmap" element={<MapplsMap />} /> 
+        <Route path="/map" element={<DisasterMap />} /> 
+        <Route path="/hazardcheck" element={<HazardCheck />} /> 
+        <Route path="/world-map" element={<InteractiveWorldMap />} /> 
         <Route path="/disaster/:state" element={<DisasterDetails />} />
         <Route path="/preparedness" element={<DisasterPreparedness />} />
+        <Route path="/yourlocation" element={<YourLocation />} />
+        <Route path="/yourlocation/:disaster" element={<YourLocationDisaster />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

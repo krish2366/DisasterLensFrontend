@@ -26,15 +26,15 @@ const InteractiveWorldMap = () => {
             return;
           }
 
-          country.style.fill = "#60a5fa"; // Default color
-          country.style.stroke = "transparent"; // Increase clickable area
+          country.style.fill = "#60a5fa"; 
+          country.style.stroke = "transparent"; 
           country.style.strokeWidth = "2";
 
           country.addEventListener("mouseenter", (event) => {
             const countryCode = event.target.id.toUpperCase();
             const countryName = getCountryName(countryCode);
             setTooltip({ visible: true, text: countryName, x: event.pageX, y: event.pageY });
-            event.target.style.fill = "#f59e0b"; // Highlight color
+            event.target.style.fill = "#f59e0b"; 
           });
 
           country.addEventListener("mousemove", (event) => {
@@ -43,7 +43,7 @@ const InteractiveWorldMap = () => {
 
           country.addEventListener("mouseleave", (event) => {
             setTooltip({ visible: false, text: "", x: 0, y: 0 });
-            event.target.style.fill = "#60a5fa"; // Revert to default color
+            event.target.style.fill = "#60a5fa"; 
           });
 
           country.addEventListener("click", (event) => {
@@ -64,7 +64,7 @@ const InteractiveWorldMap = () => {
       AD: "Andorra",
       AO: "Angola",
       AG: "Antigua and Barbuda",
-      AI: "Anguilla", // Added
+      AI: "Anguilla", 
       AR: "Argentina",
       AM: "Armenia",
       AU: "Australia",
@@ -248,9 +248,9 @@ const InteractiveWorldMap = () => {
       VA: "Vatican City",
       VE: "Venezuela",
       VN: "Vietnam",
-      WF: "Wallis and Futuna", // Added
+      WF: "Wallis and Futuna", 
       YE: "Yemen",
-      YT: "Mayotte", // Added
+      YT: "Mayotte", 
       ZM: "Zambia",
       ZW: "Zimbabwe",
     };
